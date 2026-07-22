@@ -43,7 +43,7 @@ public:
     virtual std::string getType() override{ return type; }
     virtual void setType(std::string t) override {type = t;}
     virtual void render() override {
-        std::cout << "Text " << std::endl;
+        std::cout << "Text " << type << std::endl;
     }
 };
 

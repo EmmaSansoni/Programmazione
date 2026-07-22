@@ -13,8 +13,8 @@ private:
 public:
     void load(const Product& product);
     void unload(const Product& product);
-    void lowStock() const;
-    void print() const;
+    void lowStock();
+    void print();
 };
 
 #endif

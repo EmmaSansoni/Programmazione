@@ -19,6 +19,10 @@ void CheckingAccount::print() {
               << '\n';
 }
 
+void CheckingAccount::addInterest() {
+    // Un conto corrente non gestisce gli interessi
+}
+
 void SavingsAccount::deposit(double amount) {
     if (amount > 0)
         saldo += amount;

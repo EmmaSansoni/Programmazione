@@ -12,7 +12,7 @@ public:
     virtual void withdraw(double amount) = 0;
     virtual void print() = 0;
 
-    virtual void addInterest();
+    virtual void addInterest() = 0;
 
 protected:
     std::string intestatario;

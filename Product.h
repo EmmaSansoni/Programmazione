@@ -21,12 +21,6 @@ public:
 
         if (c == nullptr)
             throw std::invalid_argument("Codice non valido");
-
-        if (std::strlen(c) > 5)
-            throw std::invalid_argument(
-                "Il codice può contenere al massimo 5 caratteri"
-            );
-
         std::strcpy(codice, c);
     }
 

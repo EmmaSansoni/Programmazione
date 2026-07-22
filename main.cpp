@@ -50,10 +50,6 @@ int main() {
         std::cout << "Quanti esemplari vuoi aggiungere? ";
         int tot1;
         std::cin >> tot1;
-        if (tot1 <= 0)
-            throw std::invalid_argument(
-                "La quantita deve essere maggiore di zero"
-            );
         for (int i = 0; i < tot1; ++i) {
             inventory.load(prodotto1);
         }
@@ -72,10 +68,6 @@ int main() {
         std::cout << "Quanti esemplari vuoi aggiungere? ";
         int tot2;
         std::cin >> tot2;
-        if (tot2 <= 0)
-            throw std::invalid_argument(
-                "La quantita deve essere maggiore di zero"
-            );
         for (int i = 0; i < tot2; ++i) {
             inventory.load(prodotto2);
         }
@@ -101,31 +93,42 @@ int main() {
         std::cout << "Scelta non valida" << std::endl;
         return 1;
     }
-    std::cout << "\nMenu componenti:\n"
-              << "1. Crea un pulsante\n"
-              << "2. Crea una barra\n"
-              << "3. Crea un testo\n"
-              << "Altro. Esci\n"
-              << "Scelta: ";
-    std::cin >> scelta;
-    switch (scelta) {
-        case 1: {
-            Buttons button;
-            factory->ButtonsFactory(&button);
-            break;
+    bool continua = true;
+    while (continua) {
+        std::cout << "\nMenu componenti:\n"
+                  << "1. Crea un pulsante\n"
+                  << "2. Crea una barra\n"
+                  << "3. Crea un testo\n"
+                  << "Altro. Mostra e esci\n"
+                  << "Scelta: ";
+        std::cin >> scelta;
+
+        switch (scelta) {
+            case 1: {
+                Buttons button;
+                factory->ButtonsFactory(&button);
+                std::cout << "Pulsante aggiunto!\n";
+                break;
+            }
+            case 2: {
+                Bars bar;
+                factory->BarsFactory(&bar);
+                std::cout << "Barra aggiunta!\n";
+                break;
+            }
+            case 3: {
+                Text text;
+                factory->TextFactory(&text);
+                std::cout << "Testo aggiunto!\n";
+                break;
+            }
+            default:
+                continua = false; // Esci dal ciclo while
+                break;
         }
-        case 2: {
-            Bars bar;
-            factory->BarsFactory(&bar);
-            break;
-        }
-        case 3: {
-            Text text;
-            factory->TextFactory(&text);
-            break;
-        }
-        default:
-            break;
     }
+    std::cout << "\nInterfaccia ottenuta: \n";
+    factory->renderAll();
+    delete factory;
     return 0;
 }

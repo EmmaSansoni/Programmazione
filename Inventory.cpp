@@ -7,7 +7,7 @@
 void Inventory::load(const Product& product) {
     for (auto it = products.begin(); it != products.end(); ++it) {
         if (*it == product) {
-            it->setQuantita(1);
+            it->setQuantita(it->getQuantita() + 1); // Incrementa di 1
             return;
         }
     }
@@ -28,15 +28,21 @@ void Inventory::unload(const Product& product) {
     throw std::runtime_error("Prodotto non presente nell'inventario");
 }
 
-void Inventory::lowStock() const {
+void Inventory::lowStock() {
+    bool trovato = false;
     for (auto it = products.begin(); it != products.end(); ++it) {
         if (it->getQuantita() < 5) {
-            throw std::runtime_error("Prodotto non presente nell'inventario");
+            std::cout << "ATTENZIONE - Scorte basse per: " << it->getNome()
+                      << " (Quantita: " << it->getQuantita() << ")\n";
+            trovato = true;
         }
+    }
+    if (!trovato) {
+        std::cout << "Tutti i prodotti hanno scorte sufficienti.\n";
     }
 }
 
-void Inventory::print() const {
+void Inventory::print() {
     for (auto it = products.begin(); it != products.end(); ++it) {
         std::cout << "Nome: " << it->getNome()
                   << "\nCodice: ";
