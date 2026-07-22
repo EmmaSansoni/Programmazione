@@ -1,4 +1,4 @@
-// Metodi della classe Inventory dell'esercizio 5
+// Esercizio 5: Metodi dell'Inventory
 #include "Inventory.h"
 
 #include <iostream>
