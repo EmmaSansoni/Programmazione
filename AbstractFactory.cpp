@@ -1,4 +1,5 @@
 // Esercizio 6: metodi dell'AbstractFactory
+// Da correggere: non si ha una creazione di oggetti ma una copia
 #include "AbstractFactory.h"
 
 #include <iostream>
